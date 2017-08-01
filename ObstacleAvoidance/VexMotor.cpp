@@ -1,4 +1,4 @@
-#include VexMotor.h
+#include "VexMotor.h"
 
 //Default constructor. Creates a motor with no pin and default direction
 VexMotor::VexMotor(): direction(1) {}
@@ -22,7 +22,7 @@ int VexMotor::getPower()
 	{
 		return motor.read() - offset;
 	}
-	return null;
+	return 0;
 }
 
 //setPower(int power)

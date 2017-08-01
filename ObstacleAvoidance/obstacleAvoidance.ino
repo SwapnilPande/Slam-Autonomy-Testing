@@ -1,14 +1,14 @@
-#include <vexMotor.h>
+#include "VexMotor.h"
 
 #include <NewPing.h>
 
 
-#include <Servo.h>
+//#include <Servo.h>
 
-//Servo ultraHead;
-vexMotor ultraHead;
-Servo leftDrive;
-Servo rightDrive;
+VexMotor ultraHead(4,false);
+//vexMotor ultraHead;
+//Servo leftDrive;
+//Servo rightDrive;
 
 
 
@@ -32,14 +32,13 @@ double readUltraPot()
   return degPerCount*(double)analogRead(ultraPot)-zeroOffset;
 }
 
-double setMotorPower(Servo &motor, int power)
+double setMotorPower(VexMotor &motor, int power)
 {
-  motor.write(power);//motorPowerScale*power - motorPowerShift);
+  motor.setPower(power);//motorPowerScale*power - motorPowerShift);
 }
 
 void setup() {
   //ultraHead.attach(4);
-  ultraHead.attach(4);
   Serial.begin(9600);
 }
 
@@ -51,12 +50,12 @@ void loop() {
   if(scanDirection == 1)
   {
       //setMotorPower(ultraHead, 81);
-      ultraHead.write(70);
+      ultraHead.setPower(70);
   }
   else
   {
           //setMotorPower(ultraHead, 90);
-    ultraHead.write(-70);
+    ultraHead.setPower(-70);
   }
   
   Serial.println(readUltraPot());
