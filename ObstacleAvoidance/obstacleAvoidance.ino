@@ -29,7 +29,6 @@ const double motorPowerShift = -90;
 
 double readUltraPot()
 {
-  
   return degPerCount*(double)analogRead(ultraPot)-zeroOffset;
 }
 
@@ -45,7 +44,7 @@ void setup() {
 }
 
 int scanDirection = -1;
-bool debounce = false;
+
 void loop() {
   if(readUltraPot() <= -45) scanDirection = 1;
   if(readUltraPot() >= 45) scanDirection = -1;
@@ -61,7 +60,5 @@ void loop() {
   }
   
   Serial.println(readUltraPot());
-
-
 
 }
